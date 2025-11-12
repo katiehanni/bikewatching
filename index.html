@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bikewatching</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="map.css" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="map.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <h1>🚴🏼‍♀️ Bikewatching</h1>
+      <label for="time-slider">
+        Filter by time:
+        <span class="time-display">
+          <time id="selected-time" aria-live="polite"></time>
+          <em id="any-time">(any time)</em>
+        </span>
+        <input
+          id="time-slider"
+          type="range"
+          min="-1"
+          max="1440"
+          value="-1"
+          step="15"
+          aria-label="Filter trips by start or end time"
+        />
+      </label>
+    </header>
+    <p class="intro">
+      Explore Bluebikes activity across Boston and Cambridge. Circle size
+      reflects station traffic, while color shows whether trips are primarily
+      departing or arriving. Use the time filter to focus on specific times of
+      day and discover commuter patterns.
+    </p>
+    <main>
+      <div id="map">
+        <svg></svg>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <div class="legend-label">Legend:</div>
+        <div class="legend-item" style="--departure-ratio: 1">
+          <span class="swatch" aria-hidden="true"></span>
+          <span>More departures</span>
+        </div>
+        <div class="legend-item" style="--departure-ratio: 0.5">
+          <span class="swatch" aria-hidden="true"></span>
+          <span>Balanced</span>
+        </div>
+        <div class="legend-item" style="--departure-ratio: 0">
+          <span class="swatch" aria-hidden="true"></span>
+          <span>More arrivals</span>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

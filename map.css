@@ -1,0 +1,52 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#map {
+  position: relative;
+  width: min(100%, 78rem);
+  aspect-ratio: 16 / 9;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 35px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+#map .mapboxgl-canvas {
+  border-radius: inherit;
+}
+
+#map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+}
+
+#map circle {
+  pointer-events: auto;
+  fill: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio, 0.5)),
+    var(--color-arrivals)
+  );
+  fill-opacity: 0.6;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  transition: r 0.2s ease, fill 0.2s ease, fill-opacity 0.2s ease;
+}
+
+#map circle:hover {
+  stroke-width: 2.5;
+  fill-opacity: 0.85;
+}
+
+.mapboxgl-ctrl-attrib {
+  font-size: 0.75rem;
+}
+
