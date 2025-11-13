@@ -1,7 +1,7 @@
 import mapboxgl from 'https://cdn.jsdelivr.net/npm/mapbox-gl@2.15.0/+esm';
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
-const MAPBOX_ACCESS_TOKEN = 'pk.YOUR_MAPBOX_ACCESS_TOKEN_HERE';
+const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoieWVyYmFtYXRlcXVlZW4iLCJhIjoiY21od2NuNHV5MDV5bTJrb2NueDlpYjI5NiJ9.Zw3_kRHuvzuP3lNKqNBp_A';
 const STATIONS_URL = 'https://dsc106.com/labs/lab07/data/bluebikes-stations.json';
 const TRIPS_URL = 'https://dsc106.com/labs/lab07/data/bluebikes-traffic-2024-03.csv';
 
