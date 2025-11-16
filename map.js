@@ -22,7 +22,7 @@ const map = new mapboxgl.Map({
   maxZoom: 18,
 });
 
-const svg = d3.select('#map').select('svg');
+let svg;
 const stationFlow = d3.scaleQuantize().domain([0, 1]).range([0, 0.5, 1]);
 const radiusScale = d3.scaleSqrt().range([0, 25]);
 
@@ -125,7 +125,7 @@ function getCoords(mapInstance, station) {
 }
 
 function updatePositions(mapInstance) {
-  if (!circles) return;
+  if (!svg || !circles) return;
 
   circles
     .attr('cx', (d) => getCoords(mapInstance, d).cx)
@@ -205,7 +205,11 @@ function initialiseSlider(mapInstance, stationsWithTraffic) {
 
 map.on('load', async () => {
   try {
-    svg.attr('aria-hidden', false);
+    svg = d3
+      .select(map.getCanvasContainer())
+      .append('svg')
+      .attr('aria-hidden', false)
+      .attr('focusable', false);
 
     const [stationJSON] = await Promise.all([d3.json(STATIONS_URL)]);
     const stations = stationJSON?.data?.stations ?? [];
